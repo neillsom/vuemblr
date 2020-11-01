@@ -1,4 +1,4 @@
-# vueblr
+# vuemblr
 
 ## Project setup
 ```
