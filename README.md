@@ -1,4 +1,4 @@
-# vuemblr
+# vumblr
 
 ## Project setup
 ```

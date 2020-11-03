@@ -5,7 +5,7 @@ Vue.use(Vuetify);
 
 export default new Vuetify({
 	theme: {
-    dark: true,
+		dark: true,
 		options: { customProperties: true },
 		themes: {
 			light: {
@@ -19,14 +19,16 @@ export default new Vuetify({
 				success: '#06d6a0',
 				warning: '#ffd166',
 				surface: '#f2f5f8',
+				badge: '#D74633 ',
 			},
 			dark: {
 				primary: '#36465D',
 				secondary: '#2E4B65',
 				accent: '#6F9D4D',
 				error: '#5CA2C7',
-        background: '#36465D',
-        iconColor: '#ffffff',
+				background: '#36465D',
+				iconColor: '#ffffff',
+				badge: '#D74633 ',
 			},
 		},
 		icons: {

@@ -5,17 +5,20 @@
         <v-toolbar-title> vumblr </v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>
-      <v-btn
-        class="nav-button"
-        v-for="link in links"
-        :key="`${link.label}-link`"
-        :to="link.url"
-        depressed
-        small
-        :color="link.color"
-      >
-        <v-icon color="iconColor">{{ link.icon }}</v-icon>
-      </v-btn>
+      <!-- <v-badge color="badge" overlap> -->
+        <v-btn
+          class="nav-button"
+          v-for="link in links"
+          :key="`${link.label}-link`"
+          :to="link.url"
+          depressed
+          small
+          :color="link.color"
+        >
+          <v-icon color="iconColor">{{ link.icon }}</v-icon>
+        </v-btn>
+      <!-- </v-badge> -->
+
       <v-btn small color="transparent" depressed @click="toggleTheme">
         <v-icon color="iconColor"> mdi-radiobox-marked </v-icon>
       </v-btn>
@@ -65,7 +68,7 @@ export default {
           label: "New Post",
           url: "/new",
           icon: "mdi-pencil",
-          color: "primary",
+          color: "success",
         },
       ],
     };
@@ -88,7 +91,6 @@ export default {
   font-weight: 700;
   font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
   outline: 1px solid var(--v-secondary-base);
-
 }
 .nav-button {
   margin: 0 10px;
