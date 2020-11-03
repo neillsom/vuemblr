@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>Account</h1>
+    <h1>Inbox</h1>
   </v-container>
 </template>
 

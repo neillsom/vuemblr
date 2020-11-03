@@ -5,6 +5,8 @@ import About from '../views/About.vue';
 import Dashboard from '../views/Dashboard.vue';
 import NewPost from '../views/NewPost.vue';
 import Account from '../views/Account.vue';
+import Inbox from '../views/Inbox.vue';
+import Signup from '../views/Signup.vue';
 
 Vue.use(VueRouter);
 
@@ -33,6 +35,16 @@ const routes = [
 		path: '/account',
 		name: 'Account',
 		component: Account,
+	},
+	{
+		path: '/signup',
+		name: 'Signup',
+		component: Signup,
+	},
+	{
+		path: '/inbox',
+		name: 'Inbox',
+		component: Inbox,
 	},
 ];
 

@@ -1,18 +1,23 @@
 <template>
-  <v-app>
-    <v-app-bar app color="primary" dark flat class="app-bar">
-      <v-toolbar-title style="font-weight: 700;">vuemblr.</v-toolbar-title>
+  <v-app :style="{ background: $vuetify.theme.themes[theme].background }">
+    <v-app-bar app color="primary" flat class="c-app-bar">
+      <router-link to="/dashboard">
+        <v-toolbar-title> vumblr </v-toolbar-title>
+      </router-link>
       <v-spacer></v-spacer>
       <v-btn
         class="nav-button"
         v-for="link in links"
         :key="`${link.label}-link`"
         :to="link.url"
-        icon
+        depressed
         small
-        dark
+        :color="link.color"
       >
-        <v-icon>{{ link.icon }}</v-icon>
+        <v-icon color="iconColor">{{ link.icon }}</v-icon>
+      </v-btn>
+      <v-btn small color="transparent" depressed @click="toggleTheme">
+        <v-icon color="iconColor"> mdi-radiobox-marked </v-icon>
       </v-btn>
     </v-app-bar>
 
@@ -31,21 +36,65 @@ export default {
   data() {
     return {
       links: [
-        { label: "Dashboard", url: "/dashboard", icon: "mdi-home" },
-        // { label: "Home", url: "/", icon: "mdi-home" },
-        // { label: "Login", url: "/login" },
-        // { label: "Signup", url: "/signup" },
-        { label: "Account", url: "/account", icon: "mdi-account" },
-        { label: "New Post", url: "/new", icon: "mdi-pencil" },
+        {
+          label: "Dashboard",
+          url: "/dashboard",
+          icon: "mdi-home",
+          color: "transparent",
+        },
+
+        {
+          label: "Signup",
+          url: "/signup",
+          icon: "mdi-account-plus",
+          color: "transparent",
+        },
+        {
+          label: "Account",
+          url: "/account",
+          icon: "mdi-account",
+          color: "transparent",
+        },
+        {
+          label: "Inbox",
+          url: "/inbox",
+          icon: "mdi-email-outline",
+          color: "transparent",
+        },
+        {
+          label: "New Post",
+          url: "/new",
+          icon: "mdi-pencil",
+          color: "primary",
+        },
       ],
     };
+  },
+  methods: {
+    toggleTheme() {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+    },
+  },
+  computed: {
+    theme() {
+      return this.$vuetify.theme.dark ? "dark" : "light";
+    },
   },
 };
 </script>
 
 <style scoped>
+.c-app-bar {
+  font-weight: 700;
+  font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+  outline: 1px solid var(--v-secondary-base);
 
+}
 .nav-button {
   margin: 0 10px;
+}
+.v-toolbar__title {
+  color: var(--v-iconColor-base);
+  text-decoration: none;
 }
 </style>

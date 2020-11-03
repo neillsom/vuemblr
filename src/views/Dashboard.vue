@@ -12,7 +12,6 @@
           contain
         >
         </v-img>
-        <!-- <div></div> -->
       </v-col>
       <v-col>
         <Post :post="post" />
@@ -52,7 +51,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #36465d;
   padding-bottom: 20px;
 }
 
