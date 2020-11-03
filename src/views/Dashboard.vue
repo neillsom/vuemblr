@@ -1,11 +1,29 @@
 <template>
   <div class="dashboard">
     <v-spacer class="mt-4"></v-spacer>
-    <Post v-for="post in posts" :key="post.id" :post="post" />
+    <v-row v-for="post in posts" :key="post.id">
+      <v-col>
+        <v-img
+          class="avatar"
+          :style="{
+            background: 'url(' + generateAvatar() + ')',
+            'background-size': 'cover',
+          }"
+          contain
+        >
+        </v-img>
+        <!-- <div></div> -->
+      </v-col>
+      <v-col>
+        <Post :post="post" />
+      </v-col>
+    </v-row>
   </div>
 </template>
 
 <script>
+import postData from "../data/posts.json";
+import avatarData from "../data/avatars.json";
 import Post from "../components/Post";
 
 export default {
@@ -16,96 +34,15 @@ export default {
 
   data() {
     return {
-      posts: [
-        {
-          id: 184999484904,
-          originalPostedDate: "May 19th, 2019, 4:02 PM",
-          source:
-            "https://debbie-sketch.tumblr.com/post/184999484904/a-hero-needs-to-rest",
-          originalPoster: "debbie-sketch",
-          postContent: {
-            imageUrl:
-              "https://64.media.tumblr.com/f7ed1596ebd21918f8a7d9b9aaba2c98/tumblr_prrxc9itIN1tf04pfo1_540.png",
-            text: "A hero needs to rest",
-            tags: [
-              "breath of the wild",
-              "link",
-              "the legend of zelda",
-              "nintendo",
-              "Illustration",
-              "artists on tumblr",
-              "artists of tumblr",
-              "master sword",
-              "navi",
-            ],
-          },
-          isLiked: false,
-          noteCount: 0,
-        },
-        {
-          id: 633585841416126464,
-          originalPostedDate: "March 10th, 2014, 3:47 PM",
-          source: "https://modernizor.tumblr.com/post/633585841416126464",
-          originalPoster: "modernizor",
-          postContent: {
-            imageUrl:
-              "https://64.media.tumblr.com/c7999ee13c3ed7103212130f9d368b4d/tumblr_nl9p9yoeVw1tcafqqo1_540.jpg",
-            text: "Thai Basil",
-            tags: [
-              "herbs",
-              "herbalism",
-              "basil",
-              "thai basil",
-              "plant",
-              "flower",
-              "purple flower",
-              "mint",
-              "nature",
-              "me",
-            ],
-          },
-          isLiked: false,
-          noteCount: 0,
-        },
-        {
-          id: 64543937446,
-          originalPostedDate: "October 19th, 2013, 9:08 PM",
-          source:
-            "https://incheworm.tumblr.com/post/117007771390/me-really-wants-a-romantic-relationship-me-never",
-          originalPoster: "incheworm",
-          postContent: {
-            imageUrl:
-              "https://64.media.tumblr.com/b43accfb087d34082eed53fe1d222682/tumblr_inline_p7hlgqfLOq1s48u4s_500.png",
-            text:
-              "<blockquote><p>Me: Really wants a romantic relationship</p><p>Me: Never develops strong feelings for anyone</p><p>Me:&nbsp;</p></blockquote>",
-            tags: [
-              "me",
-              "my life",
-              "relatable",
-              "romance",
-              "im going to be a onely cat lady",
-            ],
-          },
-          isLiked: false,
-          noteCount: 0,
-        },
-        {
-          id: 77735288844,
-          originalPostedDate: "February 24th, 2014, 2:38 PM",
-          source:
-            "https://figdays.com/post/633582334571053056/jackalope-skull-kittybombcurios",
-          originalPoster: "figdays",
-          postContent: {
-            imageUrl:
-              "https://64.media.tumblr.com/7d390c18cb671abbb1a0dcc5719d8704/a09df0486767722e-6d/s540x810/6afe3f421a4893124eaf801946f0baa234b3d138.jpg",
-            text: "St. John's Wort",
-            tags: ["skull", "decor"],
-          },
-          isLiked: false,
-          noteCount: 0,
-        },
-      ],
+      posts: postData,
+      avatars: avatarData,
     };
+  },
+  methods: {
+    generateAvatar() {
+      return this.avatars[Math.floor(Math.random() * this.avatars.length)]
+        .imageUrl;
+    },
   },
 };
 </script>
@@ -116,5 +53,13 @@ export default {
   flex-direction: column;
   align-items: center;
   background: #36465d;
+  padding-bottom: 20px;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+
+  border-radius: 5px;
 }
 </style>

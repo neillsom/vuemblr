@@ -19,6 +19,9 @@ export default new Vuetify({
 				accent: '#6F9D4D',
 				error: '#5CA2C7',
 			},
-		},
+    },
+    icons: {
+      iconfont: 'fa4', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4' || 'faSvg'
+    },
 	},
 });
