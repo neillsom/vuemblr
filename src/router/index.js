@@ -11,6 +11,9 @@ import Signup from '../views/Signup.vue';
 Vue.use(VueRouter);
 
 const routes = [
+	// <===
+	//
+	//
 	// {
 	// 	path: '/',
 	// 	name: 'Home',

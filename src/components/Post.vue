@@ -6,7 +6,7 @@
           <a class="posted-by">{{ post.originalPoster }}:</a>
         </div>
         <div>
-          <a>0 notes</a>
+          <a>{{ post.noteCount }} notes</a>
           <a>reply</a>
           <a>reblog</a>
           <i class="fa fa-heart"></i>
@@ -36,7 +36,7 @@ export default {
   min-height: 225px;
   padding: 20px;
   margin-bottom: 18px;
-  background: #fff;
+  background: var(--v-surface-base);
   border-radius: 5px;
 }
 
