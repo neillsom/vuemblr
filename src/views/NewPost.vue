@@ -1,30 +1,78 @@
 <template>
   <v-container>
-    <v-form>
-      <v-container>
-        <v-row>
-          <v-col cols="12" md="4">
-            <v-text-field v-model="title" label="Title" required>
-            </v-text-field>
-          </v-col>
+    <div class="newpost-form">
+      <v-form ref="form" v-model="valid" lazy-validation>
+        <v-text-field
+          light
+          v-model="title"
+          counter
+          :rules="titleRules"
+          label="Title"
+          required
+        ></v-text-field>
+        <!--  -->
+        <!--  -->
+        <v-text-field
+          light
+          v-model="bodyText"
+          counter
+          :rules="bodyRules"
+          label="Body Text"
+          required
+        ></v-text-field>
+        <v-text-field
+          light
+          v-model="imageUrl"
+          :rules="imageUrlRules"
+          label="Image URL"
+        ></v-text-field>
 
-          <v-col cols="12" md="4">
-            <v-text-field v-model="bodyText" label="Body text" required>
-            </v-text-field>
-          </v-col>
+        <v-btn
+          depressed
+          :disabled="!submit"
+          color="success"
+          class="mr-4"
+          @click="submit"
+        >
+          Submit
 
-          <v-col cols="12" md="4">
-            <v-text-field v-model="imageUrl" label="Image URL"></v-text-field>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-form>
+          <!-- <v-icon> mdi-chevron-down </v-icon> -->
+        </v-btn>
+      </v-form>
+    </div>
   </v-container>
 </template>
 
+
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      valid: true,
+      title: "",
+      bodyText: "",
+      imageUrl: "",
+      // titleRules: [
+      //   (v) => !!v || "title is required",
+      //   (v) =>
+      //     (v && v.length <= 10) || "title must be less than 100 characters",
+      // ],
+    };
+  },
+
+  methods: {
+    submit() {
+      this.$refs.form.validate();
+    },
+  },
+};
 </script>
 
-<style>
+<style scoped>
+.newpost-form {
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 4px;
+}
 </style>

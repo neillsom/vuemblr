@@ -1,7 +1,7 @@
 <template>
   <div class="post">
     <v-row>
-      <v-col class="post-header-col">
+      <v-col class="post-header-col" md=9>
         <div>
           <a class="posted-by">{{ post.originalPoster }}:</a>
         </div>
@@ -9,7 +9,7 @@
           <a>{{ post.noteCount }} notes</a>
           <a>reply</a>
           <a>reblog</a>
-          <i class="fa fa-heart"></i>
+          <i class="fa fa-heart" :class="post.isLiked ? 'post-liked' : ''"></i>
         </div>
       </v-col>
     </v-row>
@@ -41,7 +41,7 @@ export default {
 }
 
 img {
-  max-width: 500px;
+  max-width: 100%;
 }
 
 .tag {
@@ -82,5 +82,9 @@ a.posted-by {
   color: #ff492f;
   transition: 0.3s;
   cursor: pointer;
+}
+
+.post-liked {
+  color: #ff492f;
 }
 </style>
