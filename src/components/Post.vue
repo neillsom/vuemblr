@@ -2,15 +2,17 @@
   <div class="post">
     <!-- avatar -->
     <div class="avatar-column">
-      <v-img
-        class="avatar"
-        :style="{
-          background: 'url(' + generateAvatar() + ')',
-          'background-size': 'cover',
-        }"
-        contain
-      >
-      </v-img>
+      <a :href="post.originalPoster"
+        ><v-img
+          class="avatar"
+          :style="{
+            background: 'url(' + generateAvatar() + ')',
+            'background-size': 'cover',
+          }"
+          contain
+        >
+        </v-img
+      ></a>
     </div>
     <div class="post-content">
       <!-- header -->
@@ -74,10 +76,9 @@ export default {
 .post {
   width: 540px;
   min-height: 225px;
-  /* padding: 20px; */
-  /* margin-bottom: 18px; */
+  margin: 10px 0;
   background: var(--v-surface-base);
-  /* border-radius: 4px; */
+  border-radius: 4px;
   position: relative;
 }
 
@@ -88,18 +89,23 @@ export default {
 .avatar {
   width: 70px;
   height: 70px;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 .avatar-column {
-  outline: 1px dashed white;
   position: absolute;
   left: -85px;
   height: 100%;
 }
 
 .avatar-column .avatar {
+  position: -webkit-sticky;
   position: sticky;
+  top: 69px;
+}
+
+.post-content {
+  padding: 10px;
 }
 
 .tag {
@@ -108,6 +114,7 @@ export default {
 }
 
 .post-header-col {
+  padding: 10px 10px 0 10px;
   display: flex;
   justify-content: space-between;
   /* padding: 0 10px 10px 10px; */

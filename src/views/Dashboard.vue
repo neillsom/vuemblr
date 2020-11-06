@@ -1,23 +1,8 @@
 <template>
   <div class="dashboard">
     <v-spacer class="mt-4"></v-spacer>
-    <v-row
-      style="outline: 1px dashed white"
-      v-for="post in posts"
-      :key="post.id"
-    >
-      <!-- <v-col>
-        <v-img
-          class="avatar"
-          :style="{
-            background: 'url(' + generateAvatar() + ')',
-            'background-size': 'cover',
-          }"
-          contain
-        >
-        </v-img>
-      </v-col> -->
-      <v-col style="padding: 0;">
+    <v-row v-for="post in posts" :key="post.id">
+      <v-col style="padding: 0">
         <Post :post="post" />
       </v-col>
     </v-row>
