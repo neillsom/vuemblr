@@ -89,7 +89,7 @@ export default {
 
 <style scoped>
 .v-toolbar.v-app-bar {
-  font-weight: 700;
+  font-weight: 900;
   font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
 
   border-bottom: 2px solid #ffffff13 !important;
