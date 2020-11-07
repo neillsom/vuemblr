@@ -1,30 +1,30 @@
 <template>
   <div class="post">
-    <!-- avatar -->
     <div class="avatar-column">
-      <a :href="post.originalPoster"
-        ><v-img
+      <a :href="post.originalPoster">
+        <v-img
           class="avatar"
           :style="{
             background: 'url(' + generateAvatar() + ')',
-            'background-size': 'cover',
           }"
           contain
         >
-        </v-img
-      ></a>
+        </v-img>
+      </a>
     </div>
     <div class="post-content">
-      <!-- header -->
-      <!-- <v-col class="post-header-col  "> -->
       <div class="post-header-col">
         <div>
           <a class="posted-by">{{ post.originalPoster }}:</a>
         </div>
         <div>
           <a>{{ post.noteCount }} notes</a>
-          <v-icon class="post-icon" color="#abb2b9"> mdi-chat-outline </v-icon>
-          <v-icon class="post-icon" color="#abb2b9"> mdi-repeat </v-icon>
+          <v-icon size="22px" style="color: #abb2b9" class="post-icon">
+            mdi-chat-outline
+          </v-icon>
+          <v-icon size="22px" style="color: #abb2b9" class="post-icon">
+            mdi-repeat
+          </v-icon>
           <v-icon
             class="post-icon like-button"
             size="22px"
@@ -34,7 +34,6 @@
           </v-icon>
         </div>
       </div>
-      <!-- </v-col> -->
 
       <!-- content -->
       <div class="post-content">
@@ -76,7 +75,7 @@ export default {
 .post {
   width: 540px;
   min-height: 225px;
-  margin: 0 auto 10px;
+  margin: 0 auto 20px;
   background: var(--v-surface-base);
   border-radius: 4px;
   position: relative;
@@ -86,10 +85,11 @@ export default {
   max-width: 100%;
 }
 
-.avatar {
+.post .avatar-column .avatar {
   width: 70px;
   height: 70px;
   border-radius: 4px;
+  background-size: cover !important;
 }
 
 .avatar-column {
@@ -138,7 +138,7 @@ a.posted-by {
 }
 
 .post-icon {
-  padding-left: 6px;
+  padding-left: 10px;
   cursor: pointer;
 }
 

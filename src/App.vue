@@ -3,9 +3,9 @@
     :style="{ background: $vuetify.theme.themes[theme].background }"
     class="app-container"
   >
-    <v-app-bar app color="primary" flat class="v-app-bar">
+    <v-app-bar style="height: 54px" class="v-app-bar" app color="primary" flat>
       <router-link to="/dashboard">
-        <v-toolbar-title> vumblr </v-toolbar-title>
+        <v-toolbar-title style="font-size: 1.75em"> vumblr </v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>
 
@@ -52,12 +52,12 @@ export default {
           color: "transparent",
         },
 
-        {
-          label: "Signup",
-          url: "/signup",
-          icon: "mdi-account-plus",
-          color: "transparent",
-        },
+        // {
+        //   label: "Signup",
+        //   url: "/signup",
+        //   icon: "mdi-account-plus",
+        //   color: "transparent",
+        // },
         {
           label: "Account",
           url: "/account",
@@ -74,7 +74,7 @@ export default {
           label: "New Post",
           url: "/new",
           icon: "mdi-pencil",
-          color: "success",
+          color: "secondary",
         },
       ],
     };
@@ -101,8 +101,9 @@ export default {
 .v-toolbar.v-app-bar {
   font-weight: 900;
   font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
-
-  border-bottom: 2px solid #ffffff13 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  display: flex;
+  flex-direction: column;
 }
 .nav-button {
   margin: 0 10px;
@@ -113,7 +114,6 @@ export default {
 }
 .main-body {
   width: 990px;
-  outline: 1px dashed white;
 }
 .router-body {
 }
