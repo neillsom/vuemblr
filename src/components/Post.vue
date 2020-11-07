@@ -76,7 +76,7 @@ export default {
 .post {
   width: 540px;
   min-height: 225px;
-  margin: 10px 0;
+  margin: 0 auto 10px;
   background: var(--v-surface-base);
   border-radius: 4px;
   position: relative;

@@ -1,28 +1,17 @@
 <template>
   <div class="dashboard">
-    <v-row>
-      <!-- posts col -->
-      <v-col class="flex-col">
-        <div class="posts-container">
-          <v-row v-for="post in posts" :key="post.id">
-            <v-col style="padding: 0">
-              <Post :post="post" />
-            </v-col>
-          </v-row>
+    <!-- posts -->
+    <div class="posts-container">
+      <div v-for="post in posts" :key="post.id">
+        <div style="padding: 0">
+          <Post :post="post" />
         </div>
-      </v-col>
-
-      <!-- sidebar col -->
-      <v-col class="flex-col">
-        <div class="sidebar-container">
-          <v-row>
-            <v-col>
-              <div class="sidebar-test"></div>
-            </v-col>
-          </v-row>
-        </div>
-      </v-col>
-    </v-row>
+      </div>
+    </div>
+    <!-- sidebar col -->
+    <div class="sidebar-container">
+      <div class="sidebar-test"></div>
+    </div>
   </div>
 </template>
 
@@ -56,14 +45,18 @@ export default {
 <style scoped>
 .sidebar-test {
   width: 320px;
-  background: pink;
-  height: 1000px;
+  background: var(--v-primary-base);
+  height: 100%;
+  outline: 1px dashed white;
 }
 .dashboard {
   padding-bottom: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
+  padding: 0 8px;
+  margin: 24px auto 0;
+  
 }
 
 .flex-col {
@@ -76,7 +69,10 @@ export default {
 .posts-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 625px;
+  outline: 1px dashed white;
 }
 
 .avatar {
