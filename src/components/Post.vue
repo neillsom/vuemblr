@@ -23,10 +23,10 @@
         </div>
         <div>
           <a>{{ post.noteCount }} notes</a>
-          <a>reply</a>
-          <a>reblog</a>
+          <v-icon class="post-icon" color="#abb2b9"> mdi-chat-outline </v-icon>
+          <v-icon class="post-icon" color="#abb2b9"> mdi-repeat </v-icon>
           <v-icon
-            class="like-button"
+            class="post-icon like-button"
             size="22px"
             :color="!!post.isLiked ? '#ff492f' : '#abb2b9'"
           >
@@ -137,13 +137,14 @@ a.posted-by {
   text-decoration: underline;
 }
 
-.like-button {
+.post-icon {
   padding-left: 6px;
-}
-.like-button:hover {
   cursor: pointer;
+}
+
+.like-button:hover {
   color: #ff492f !important;
   transition: 0.3s;
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 }
 </style>

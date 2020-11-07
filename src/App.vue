@@ -1,5 +1,8 @@
 <template>
-  <v-app :style="{ background: $vuetify.theme.themes[theme].background }">
+  <v-app
+    :style="{ background: $vuetify.theme.themes[theme].background }"
+    class="app-container"
+  >
     <v-app-bar app color="primary" flat class="v-app-bar">
       <router-link to="/dashboard">
         <v-toolbar-title> vumblr </v-toolbar-title>
@@ -25,8 +28,10 @@
       </v-btn>
     </v-app-bar>
 
-    <v-main>
-      <router-view></router-view>
+    <v-main class="main-body">
+      <div class="router-body">
+        <router-view></router-view>
+      </div>
     </v-main>
   </v-app>
 </template>
@@ -88,6 +93,11 @@ export default {
 </script>
 
 <style scoped>
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .v-toolbar.v-app-bar {
   font-weight: 900;
   font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
@@ -100,5 +110,11 @@ export default {
 .v-toolbar__title {
   color: var(--v-iconColor-base);
   text-decoration: none;
+}
+.main-body {
+  width: 990px;
+  outline: 1px dashed white;
+}
+.router-body {
 }
 </style>

@@ -1,17 +1,49 @@
 <template>
   <v-container>
     <h1>Inbox</h1>
-    <v-row>
-      <v-col>
-        <div class="icon-container">
-          <v-icon color="info" size="150px" id="icon">mdi-emoticon</v-icon>
+    <div class="post">
+      <!-- avatar -->
+      <div class="avatar-column">
+        <a :href="post.originalPoster"
+          ><v-img
+            class="avatar"
+            :style="{
+              background: 'url(' + generateAvatar() + ')',
+              'background-size': 'cover',
+            }"
+            contain
+          >
+          </v-img
+        ></a>
+      </div>
+      <div class="post-content">
+        <!-- header -->
+
+        <div class="post-header-col">
+          <div>
+            <a class="posted-by">{{ post.originalPoster }}:</a>
+          </div>
+          <div>
+            <v-icon class="post-icon" color="#abb2b9"> mdi-repeat </v-icon>
+          </div>
         </div>
-      </v-col>
-    </v-row>
+
+        <!-- content -->
+        <div class="post-content">
+          <v-text-field
+            value="John Doe"
+            label="Filled"
+            filled
+            disabled
+          ></v-text-field>
+        </div>
+      </div>
+    </div>
   </v-container>
 </template>
 
 <script>
+import '../data/posts.json'
 export default {};
 </script>
 
@@ -25,5 +57,4 @@ export default {};
   padding: 20px;
   outline: 1px dashed #9400ff70;
 }
-
 </style>
