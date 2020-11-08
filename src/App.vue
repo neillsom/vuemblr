@@ -1,8 +1,5 @@
 <template>
-  <v-app
-    :style="{ background: $vuetify.theme.themes[theme].background }"
-    class="app-container"
-  >
+  <v-app class="app-container">
     <v-app-bar style="height: 54px" class="v-app-bar" app color="primary" flat>
       <router-link to="/dashboard">
         <v-toolbar-title style="font-size: 1.75em"> vumblr </v-toolbar-title>
@@ -16,18 +13,24 @@
         :to="link.url"
         depressed
         small
-        :color="link.color"
         :title="link.label"
         :aria-label="link.label"
       >
         <v-icon color="iconColor">{{ link.icon }}</v-icon>
       </v-btn>
-
-      <v-btn small color="transparent" depressed @click="toggleTheme">
-        <v-icon color="iconColor"> mdi-radiobox-marked </v-icon>
-      </v-btn>
     </v-app-bar>
-
+    <v-btn
+      @click="toggleTheme"
+      fab
+      small
+      depressed
+      color="primary"
+      fixed
+      right
+      bottom
+    >
+      <v-icon> mdi-theme-light-dark</v-icon>
+    </v-btn>
     <v-main class="main-body">
       <div class="router-body">
         <router-view></router-view>
@@ -49,32 +52,27 @@ export default {
           label: "Dashboard",
           url: "/dashboard",
           icon: "mdi-home",
-          color: "transparent",
         },
 
         // {
         //   label: "Signup",
         //   url: "/signup",
         //   icon: "mdi-account-plus",
-        //   color: "transparent",
         // },
         {
           label: "Account",
           url: "/account",
           icon: "mdi-account",
-          color: "transparent",
         },
         {
           label: "Inbox",
           url: "/inbox",
           icon: "mdi-email-outline",
-          color: "transparent",
         },
         {
           label: "New Post",
           url: "/new",
           icon: "mdi-pencil",
-          color: "secondary",
         },
       ],
     };
@@ -97,6 +95,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--v-background-base) !important;
 }
 .v-toolbar.v-app-bar {
   font-weight: 900;
@@ -115,6 +114,10 @@ export default {
 .main-body {
   width: 990px;
 }
-.router-body {
+.v-btn.nav-button {
+  background: transparent !important;
+}
+.v-btn.nav-button:last-of-type {
+  background: var(--v-secondary-base) !important;
 }
 </style>

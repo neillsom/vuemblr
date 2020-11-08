@@ -1,20 +1,19 @@
 <template>
   <div class="dashboard">
-    <!-- posts -->
     <div class="posts-container">
       <div v-for="post in posts" :key="post.id">
-        <div style="padding: 0">
+        <div>
           <Post :post="post" />
         </div>
       </div>
     </div>
-    <!-- sidebar col -->
+
     <div class="sidebar-container">
       <div class="sidebar-test">
         <h2>Recommended Blogs</h2>
         <v-divider></v-divider>
         <v-card id="neill">
-          <v-list color="primary" flat>
+          <v-list color="background" flat>
             <v-list-item v-for="item in items" :key="item.title">
               <v-avatar tile size="37">
                 <v-img contain :src="generateAvatar()"></v-img>
@@ -93,7 +92,7 @@ export default {
 }
 .sidebar-test {
   width: 320px;
-  background: var(--v-primary-base);
+  background: var(--v-background-base) !important;
   height: 100%;
 
   margin-left: 30px;
