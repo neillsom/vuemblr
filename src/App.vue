@@ -16,7 +16,7 @@
         :title="link.label"
         :aria-label="link.label"
       >
-        <v-icon color="iconColor">{{ link.icon }}</v-icon>
+        <v-icon color="#ffffff">{{ link.icon }}</v-icon>
       </v-btn>
     </v-app-bar>
     <v-btn
@@ -108,7 +108,7 @@ export default {
   margin: 0 10px;
 }
 .v-toolbar__title {
-  color: var(--v-iconColor-base);
+  color: #ffffff;
   text-decoration: none;
 }
 .main-body {
