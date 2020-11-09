@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <div class="post">
-      <div class="avatar-column">
+      <div :style="hideSidebar ? '' : 'display: none'" class="avatar-column">
         <a :href="post.originalPoster">
           <v-img
             class="avatar"
@@ -51,13 +51,14 @@
         </div>
 
         <div class="post-content">
-          <v-img
+          <!-- <v-img
             class="post-image"
             contain
             :src="post.postContent.imageUrl"
             :alt="`a post from ${post.originalPoster}`"
           >
-          </v-img>
+          </v-img> -->
+          <img class="post-image" :src="post.postContent.imageUrl" :alt="`a post from ${post.originalPoster}`" srcset="" sizes="(max-width: 540px) 100vw, 540px">
         </div>
       </div>
     </div>
@@ -83,6 +84,15 @@ export default {
         .imageUrl;
     },
   },
+  computed: {
+    hideSidebar() {
+      if (this.$vuetify.breakpoint.width > 990) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
 };
 </script>
 
@@ -91,7 +101,7 @@ export default {
   margin-bottom: 20px;
 }
 .post {
-  width: 540px;
+  max-width: 540px;
   min-height: 225px;
   background: #fff;
   border-radius: 4px;
@@ -99,7 +109,7 @@ export default {
 }
 
 .post-image {
-  max-width: 100%;
+  width: 100%;
   background: linear-gradient(
     to bottom left,
     var(--v-primary-base),

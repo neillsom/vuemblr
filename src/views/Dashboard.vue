@@ -1,6 +1,9 @@
 <template>
   <div class="dashboard">
-    <div class="posts-container">
+    <div
+      :style="hideSidebar ? '' : 'align-items: center'"
+      class="posts-container"
+    >
       <div v-for="post in posts" :key="post.id">
         <div>
           <Post :post="post" />
@@ -8,7 +11,7 @@
       </div>
     </div>
 
-    <div class="sidebar-container">
+    <div :style="hideSidebar ? '' : 'display: none'" class="sidebar-container">
       <div class="sidebar-test">
         <h2>Recommended Blogs</h2>
         <v-divider></v-divider>
@@ -69,6 +72,16 @@ export default {
         .imageUrl;
     },
   },
+  computed: {
+    hideSidebar() {
+      if (this.$vuetify.breakpoint.width > 990) {
+        return true;
+      } else return false;
+    },
+  },
+  mounted() {
+    console.log(this.$vuetify.breakpoint.width);
+  },
 };
 </script>
 
@@ -89,6 +102,8 @@ export default {
 .v-list-item,
 .v-list-item__content {
   padding-left: 10px;
+}
+.sidebar-container {
 }
 .sidebar-test {
   width: 320px;
@@ -121,8 +136,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-end; /* on mobile resize this needs to be changed to center */
+  /* width: 100%; */
+  /* max-width: 625px; */
+}
+
+.posts-container div {
   width: 100%;
-  max-width: 625px;
 }
 
 .avatar {
