@@ -1,44 +1,20 @@
 <template>
   <v-container>
-    <div class="newpost-form">
-      <v-form ref="form" v-model="valid" lazy-validation>
-        <v-text-field
-          light
-          v-model="title"
-          counter
-          :rules="titleRules"
-          label="Title"
-          required
-        ></v-text-field>
-        <!--  -->
-        <!--  -->
-        <v-text-field
-          light
-          v-model="bodyText"
-          counter
-          :rules="bodyRules"
-          label="Body Text"
-          required
-        ></v-text-field>
-        <v-text-field
-          light
-          v-model="imageUrl"
-          :rules="imageUrlRules"
-          label="Image URL"
-        ></v-text-field>
-
-        <v-btn
-          depressed
-          :disabled="!submit"
-          color="success"
-          class="mr-4"
-          @click="submit"
+    <div class="new-post-container">
+      <v-card class="testing">
+        <div
+          v-for="type in postTypes"
+          :key="type.name"
+          class="post-type-container"
         >
-          Submit
-
-          <!-- <v-icon> mdi-chevron-down </v-icon> -->
-        </v-btn>
-      </v-form>
+          <v-btn icon large>
+            <v-icon size="50px" :color="type.iconColor">
+              {{ type.iconName }}
+            </v-icon>
+          </v-btn>
+          <p class="button-text">{{ type.name }}</p>
+        </div>
+      </v-card>
     </div>
   </v-container>
 </template>
@@ -48,31 +24,67 @@
 export default {
   data() {
     return {
-      valid: true,
-      title: "",
-      bodyText: "",
-      imageUrl: "",
-      // titleRules: [
-      //   (v) => !!v || "title is required",
-      //   (v) =>
-      //     (v && v.length <= 10) || "title must be less than 100 characters",
-      // ],
+      postTypes: [
+        {
+          name: "Text",
+          iconColor: "black",
+          iconName: "mdi-format-letter-case",
+        },
+        {
+          name: "Photo",
+          iconColor: "red",
+          iconName: "mdi-camera",
+        },
+        {
+          name: "Quote",
+          iconColor: "orange",
+          iconName: "mdi-format-quote-open",
+        },
+        {
+          name: "Link",
+          iconColor: "green",
+          iconName: "mdi-link-variant",
+        },
+        {
+          name: "Audio",
+          iconColor: "purple",
+          iconName: "mdi-headphones",
+        },
+        {
+          name: "Video",
+          iconColor: "pink",
+          iconName: "mdi-video-vintage",
+        },
+      ],
     };
   },
 
-  methods: {
-    submit() {
-      this.$refs.form.validate();
-    },
-  },
+  methods: {},
 };
 </script>
 
 <style scoped>
-.newpost-form {
-  margin-top: 20px;
+.new-post-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.testing {
   padding: 20px;
-  background: white;
+  background: #fff;
   border-radius: 4px;
+  width: 540px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.post-type-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.theme--dark .button-text {
+  color: black;
 }
 </style>

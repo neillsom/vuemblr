@@ -28,6 +28,7 @@ export default new Vuetify({
 				iconColor: '#757575',
 				surface: '#ffffff',
 				background: '#f6f7ff',
+				likeColor: '#ff5c93',
 			},
 			dark: {
 				primary: '#36465D',
@@ -37,6 +38,7 @@ export default new Vuetify({
 				background: '#36465D',
 				iconColor: '#abb2b9',
 				surface: '#ffffff',
+				likeColor: '#ff492f',
 			},
 		},
 		icons: {

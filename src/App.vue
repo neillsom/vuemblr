@@ -13,6 +13,7 @@
         :to="link.url"
         depressed
         small
+        height="32px"
         :title="link.label"
         :aria-label="link.label"
       >

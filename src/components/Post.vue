@@ -18,7 +18,7 @@
           <div>
             <a class="posted-by">{{ post.originalPoster }}:</a>
           </div>
-          <div>
+          <div class="notes-and-icons">
             <a>{{ post.noteCount }} notes</a>
             <v-icon
               size="22px"
@@ -34,12 +34,13 @@
             >
               mdi-repeat
             </v-icon>
+
             <v-icon
               class="post-icon like-button"
               size="22px"
               :color="
-                !!post.isLiked
-                  ? '#ff492f'
+                post.isLiked
+                  ? this.$vuetify.theme.currentTheme.likeColor
                   : this.$vuetify.theme.currentTheme.iconColor
               "
               >{{
@@ -49,15 +50,14 @@
           </div>
         </div>
 
-        <!-- content -->
         <div class="post-content">
           <v-img
             class="post-image"
-            placeholder
             contain
             :src="post.postContent.imageUrl"
             :alt="`a post from ${post.originalPoster}`"
-          />
+          >
+          </v-img>
         </div>
       </div>
     </div>
@@ -93,13 +93,18 @@ export default {
 .post {
   width: 540px;
   min-height: 225px;
-  background: var(--v-surface-base);
+  background: #fff;
   border-radius: 4px;
   position: relative;
 }
 
 .post-image {
   max-width: 100%;
+  background: linear-gradient(
+    to bottom left,
+    var(--v-primary-base),
+    var(--v-secondary-base)
+  );
 }
 
 .post .avatar-column .avatar {
@@ -113,9 +118,6 @@ export default {
 }
 
 .post .avatar-column .avatar.theme--light {
-  border: 1px solid black;
-  box-shadow: 0 3px 11px 0 #e8eafc, 0 3px 3px -2px hsla(0, 0%, 69.8%, 0.1),
-    0 1px 8px 0 hsla(0, 0%, 60.4%, 0.1);
 }
 
 .avatar-column {
@@ -136,8 +138,8 @@ export default {
 .post-header-col {
   padding: 10px 10px 0 10px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  /* padding: 0 10px 10px 10px; */
 }
 
 .post-header-col a {
@@ -147,9 +149,8 @@ export default {
   font-weight: 500 !important;
 }
 
-.post-header-col div:nth-of-type(2) {
-  display: flex;
-  align-items: center;
+.theme--dark .post-header-col a {
+  font-weight: 700 !important;
 }
 
 a.posted-by {
@@ -161,9 +162,14 @@ a.posted-by {
   cursor: pointer;
 }
 
-.like-button:hover {
-  color: #ff492f !important;
-  transition: 0.3s;
-  /* transform: scale(1.1); */
+.notes-and-icons {
+}
+
+.notes-and-icons .like-button {
+}
+
+.post-icon:hover {
+  color: var(--v-likeColor-base) !important;
+  transition: 0.2s;
 }
 </style>
