@@ -22,31 +22,33 @@
             <a>{{ post.noteCount }} notes</a>
             <v-icon
               size="22px"
-              :color="this.$vuetify.theme.currentTheme.iconColor"
+              :color="this.$vuetify.theme.currentTheme.postText"
               class="post-icon"
             >
               mdi-chat-outline
             </v-icon>
             <v-icon
               size="22px"
-              :color="this.$vuetify.theme.currentTheme.iconColor"
+              :color="this.$vuetify.theme.currentTheme.postText"
               class="post-icon"
             >
               mdi-repeat
             </v-icon>
 
-            <v-icon
-              class="post-icon like-button"
-              size="22px"
-              :color="
-                post.isLiked
-                  ? this.$vuetify.theme.currentTheme.likeColor
-                  : this.$vuetify.theme.currentTheme.iconColor
-              "
-              >{{
-                this.$vuetify.theme.isDark ? "mdi-heart" : "mdi-heart-outline"
-              }}
-            </v-icon>
+            <div style="display: inline" @click="post.isLiked = !post.isLiked">
+              <v-icon
+                class="post-icon like-button"
+                size="22px"
+                :color="
+                  post.isLiked
+                    ? this.$vuetify.theme.currentTheme.likeColor
+                    : this.$vuetify.theme.currentTheme.postText
+                "
+                >{{
+                  this.$vuetify.theme.isDark ? "mdi-heart" : "mdi-heart-outline"
+                }}
+              </v-icon>
+            </div>
           </div>
         </div>
 
@@ -58,7 +60,16 @@
             :alt="`a post from ${post.originalPoster}`"
           >
           </v-img> -->
-          <img class="post-image" :src="post.postContent.imageUrl" :alt="`a post from ${post.originalPoster}`" srcset="" sizes="(max-width: 540px) 100vw, 540px">
+          <img
+            class="post-image"
+            :src="post.postContent.imageUrl"
+            :alt="`a post from ${post.originalPoster}`"
+            srcset=""
+            sizes="(max-width: 540px) 100vw, 540px"
+          />
+          <div class="post-body-text">
+            <span v-html="post.postContent.text"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -83,10 +94,13 @@ export default {
       return this.avatars[Math.floor(Math.random() * this.avatars.length)]
         .imageUrl;
     },
+    likePost() {
+      console.log(this.$vuetify);
+    },
   },
   computed: {
     hideSidebar() {
-      if (this.$vuetify.breakpoint.width > 990) {
+      if (this.$vuetify.breakpoint.width > 1090) {
         return true;
       } else {
         return false;
@@ -140,6 +154,11 @@ export default {
   padding: 10px;
 }
 
+.post-body-text {
+  margin-top: 8px;
+  color: var(--v-postText-darken2);
+}
+
 .tag {
   color: rgba(0, 0, 0, 0.65);
   cursor: pointer;
@@ -155,7 +174,7 @@ export default {
 .post-header-col a {
   padding: 0 5px;
   letter-spacing: -0.22px;
-  color: var(--v-iconColor-base) !important;
+  color: var(--v-postText-base) !important;
   font-weight: 500 !important;
 }
 

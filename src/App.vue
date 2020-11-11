@@ -1,7 +1,7 @@
 <template>
   <v-app class="app-container">
     <v-app-bar style="height: 54px" class="v-app-bar" app color="primary" flat>
-      <router-link to="/dashboard">
+      <router-link class="toolbar-title-container" to="/dashboard">
         <v-toolbar-title style="font-size: 1.75em"> vumblr </v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>
@@ -108,10 +108,12 @@ export default {
 .nav-button {
   margin: 0 10px;
 }
-.v-toolbar__title {
+
+.toolbar-title-container {
   color: #ffffff;
   text-decoration: none;
 }
+
 .main-body {
   width: 990px;
 }

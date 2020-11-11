@@ -74,14 +74,12 @@ export default {
   },
   computed: {
     hideSidebar() {
-      if (this.$vuetify.breakpoint.width > 990) {
+      if (this.$vuetify.breakpoint.width > 1090) {
         return true;
       } else return false;
     },
   },
-  mounted() {
-    console.log(this.$vuetify.breakpoint.width);
-  },
+  mounted() {},
 };
 </script>
 
