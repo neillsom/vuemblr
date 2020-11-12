@@ -6,7 +6,7 @@
           <v-img
             class="avatar"
             :style="{
-              background: 'url(' + generateAvatar() + ')',
+              background: 'url(' + post.posterAvatar + ')',
             }"
             contain
           >
@@ -60,13 +60,15 @@
             :alt="`a post from ${post.originalPoster}`"
           >
           </v-img> -->
-          <img
-            class="post-image"
-            :src="post.postContent.imageUrl"
-            :alt="`a post from ${post.originalPoster}`"
-            srcset=""
-            sizes="(max-width: 540px) 100vw, 540px"
-          />
+          <div>
+            <img
+              class="post-image"
+              :src="post.postContent.imageUrl"
+              :alt="`a post from ${post.originalPoster}`"
+              srcset=""
+              sizes="(max-width: 540px) 100vw, 540px"
+            />
+          </div>
           <div class="post-body-text">
             <span v-html="post.postContent.text"></span>
           </div>
@@ -86,6 +88,7 @@ export default {
   },
   data() {
     return {
+      overlay: false,
       avatars: avatarData,
     };
   },

@@ -25,7 +25,7 @@
           </p>
         </div>
       </v-card> -->
-      <v-card min-width="540px" style="padding: 20px" light>
+      <v-card max-width="540px" style="padding: 20px" light>
         <v-form>
           <v-text-field v-model="title" label="Title" required></v-text-field>
 
