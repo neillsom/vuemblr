@@ -200,8 +200,8 @@ a.posted-by {
 .notes-and-icons .like-button {
 }
 
-.post-icon:hover {
+/* .post-icon:hover {
   color: var(--v-likeColor-base) !important;
   transition: 0.2s;
-}
+} */
 </style>
