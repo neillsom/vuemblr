@@ -2,11 +2,11 @@
   <v-card>
     <div class="post">
       <div :style="hideSidebar ? '' : 'display: none'" class="avatar-column">
-        <a :href="post.originalPoster">
+        <a :href="post.blogName">
           <v-img
             class="avatar"
             :style="{
-              background: 'url(' + post.posterAvatar + ')',
+              background: 'url(' + post.blog.avatar + ')',
             }"
             contain
           >
@@ -16,10 +16,10 @@
       <div class="post-content">
         <div class="post-header-col">
           <div>
-            <a class="posted-by">{{ post.originalPoster }}:</a>
+            <a class="posted-by">{{ post.blogName }}:</a>
           </div>
           <div class="notes-and-icons">
-            <a>{{ post.noteCount }} notes</a>
+            <a>{{ Number(post.noteCount).toLocaleString() }} notes</a>
             <v-icon
               size="22px"
               :color="this.$vuetify.theme.currentTheme.postText"
@@ -53,24 +53,17 @@
         </div>
 
         <div class="post-content">
-          <!-- <v-img
-            class="post-image"
-            contain
-            :src="post.postContent.imageUrl"
-            :alt="`a post from ${post.originalPoster}`"
-          >
-          </v-img> -->
           <div>
             <img
               class="post-image"
-              :src="post.postContent.imageUrl"
-              :alt="`a post from ${post.originalPoster}`"
+              :src="post.content.imageUrl"
+              :alt="`a post from ${post.blogName}`"
               srcset=""
               sizes="(max-width: 540px) 100vw, 540px"
             />
           </div>
           <div class="post-body-text">
-            <span v-html="post.postContent.text"></span>
+            <span v-html="post.content.text"></span>
           </div>
         </div>
       </div>
@@ -79,8 +72,6 @@
 </template>
 
 <script>
-import avatarData from "../data/avatars.json";
-
 export default {
   name: "Post",
   props: {
@@ -89,16 +80,11 @@ export default {
   data() {
     return {
       overlay: false,
-      avatars: avatarData,
     };
   },
   methods: {
-    generateAvatar() {
-      return this.avatars[Math.floor(Math.random() * this.avatars.length)]
-        .imageUrl;
-    },
     likePost() {
-      console.log(this.$vuetify);
+      console.log("like button clicked");
     },
   },
   computed: {
@@ -190,7 +176,7 @@ a.posted-by {
 }
 
 .post-icon {
-  padding-left: 10px;
+  margin-left: 10px;
   cursor: pointer;
 }
 
