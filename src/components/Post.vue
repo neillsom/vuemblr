@@ -53,15 +53,9 @@
         </div>
 
         <div class="post-content">
-          <div>
-            <img
-              class="post-image"
-              :src="post.content.imageUrl"
-              :alt="`a post from ${post.blogName}`"
-              srcset=""
-              sizes="(max-width: 540px) 100vw, 540px"
-            />
-          </div>
+          <div></div>
+          <PostImage :post=post />
+          <PostVideo :post=post />
           <div class="post-body-text">
             <span v-html="post.content.text"></span>
           </div>
@@ -72,7 +66,11 @@
 </template>
 
 <script>
+import PostImage from "./PostImage";
+import PostVideo from "./PostVideo";
+
 export default {
+  components: { PostImage, PostVideo },
   name: "Post",
   props: {
     post: Object,

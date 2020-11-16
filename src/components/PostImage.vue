@@ -11,7 +11,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    post: Object,
+  },
+};
 </script>
 
 <style>

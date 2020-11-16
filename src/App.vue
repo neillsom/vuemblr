@@ -20,18 +20,21 @@
         <v-icon color="#ffffff">{{ link.icon }}</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-btn
-      @click="toggleTheme"
-      fab
-      small
-      depressed
-      color="primary"
-      fixed
-      right
-      bottom
-    >
-      <v-icon> mdi-theme-light-dark</v-icon>
-    </v-btn>
+    <div class="theme-toggle">
+      <v-btn
+        @click="toggleTheme"
+        fab
+        small
+        depressed
+        color="primary"
+        fixed
+        right
+        bottom
+      >
+        <v-icon> mdi-theme-light-dark</v-icon>
+      </v-btn>
+    </div>
+
     <v-main class="main-body">
       <div class="router-body">
         <router-view></router-view>
@@ -48,6 +51,7 @@ export default {
 
   data() {
     return {
+      overlay: false,
       links: [
         {
           label: "Dashboard",
@@ -83,11 +87,11 @@ export default {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
     },
   },
-  computed: {
-    theme() {
-      return this.$vuetify.theme.dark ? "dark" : "light";
-    },
-  },
+  // computed: {
+  //   theme() {
+  //     return this.$vuetify.theme.dark ? "dark" : "light";
+  //   },
+  // },
 };
 </script>
 
