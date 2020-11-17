@@ -1,9 +1,12 @@
 <template>
   <div>
+   
     <img
-      class="post-image"
-      :src="post.content.imageUrl"
+      v-for="imageUrl in post.content.imageUrl"
+      :key="imageUrl"
       :alt="`a post from ${post.blogName}`"
+      class="post-image"
+      :src="imageUrl"
       srcset=""
       sizes="(max-width: 540px) 100vw, 540px"
     />
