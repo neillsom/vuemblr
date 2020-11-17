@@ -53,9 +53,10 @@
         </div>
 
         <div class="post-content">
-          <div></div>
-          <PostImage :post=post />
-          <PostVideo :post=post />
+          <div>
+            <PostImage v-if="post.postType === 'image'" :post="post" />
+            <PostVideo v-if="post.postType === 'video'" :post="post" />
+          </div>
           <div class="post-body-text">
             <span v-html="post.content.text"></span>
           </div>
