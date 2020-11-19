@@ -15,7 +15,7 @@
         title="github.com/neillsom/vumblr"
         aria-label="github.com/neillsom/vumblr"
       >
-        <v-icon color="barIcon">mdi-github</v-icon>
+        <v-icon color="#ffffff">mdi-github</v-icon>
       </v-btn>
 
       <v-btn
@@ -29,7 +29,7 @@
         :title="link.label"
         :aria-label="link.label"
       >
-        <v-icon color="barIcon">{{ link.icon }}</v-icon>
+        <v-icon color="#ffffff">{{ link.icon }}</v-icon>
       </v-btn>
     </v-app-bar>
     <div class="theme-toggle">

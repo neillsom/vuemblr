@@ -50,7 +50,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .icon-container {
   background: #ffffff;
   border-radius: 4px;

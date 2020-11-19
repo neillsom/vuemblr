@@ -1,42 +1,23 @@
 <template>
   <v-container>
     <div class="new-post-container">
-      <v-card class="testing">
+      <v-card class="new-post">
         <div
           v-for="type in postTypes"
           :key="type.name"
           class="post-type-container"
         >
-          <div
-            class="post-button"
-            :style="`
-            border-radius: 100%; 
-            padding: 15px;
-          `"
-          >
-            <a href="#" style="text-decoration: none">
+          <div class="post-button" @click="newPost">
+            <div class="icon-container">
               <v-icon class="new-post-icon" size="50px" :color="type.postText">
                 {{ type.iconName }}
               </v-icon>
-            </a>
+            </div>
+            <p class="button-text">
+              {{ type.name }}
+            </p>
           </div>
-          <p style="margin: 0; font-weight: 500" class="button-text">
-            {{ type.name }}
-          </p>
         </div>
-      </v-card>
-      <v-card max-width="540px" style="padding: 20px" light>
-        <v-form>
-          <v-text-field v-model="title" label="Title" required></v-text-field>
-
-          <v-text-field
-            v-model="imageUrl"
-            label="Image Url"
-            required
-          ></v-text-field>
-
-          <v-btn color="secondary">Create New</v-btn>
-        </v-form>
       </v-card>
     </div>
   </v-container>
@@ -84,24 +65,23 @@ export default {
     };
   },
 
-  methods: {},
+  methods: {
+    newPost() {
+      console.log("new post button clicked");
+    },
+  },
 };
 </script>
 
 <style scoped>
-.post-button:hover {
-}
-
-.new-post-icon::before {
-  font-weight: 700;
-}
-
-.new-post-container {
+.new-post-container,
+.post-type-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.testing {
+
+.new-post {
   padding: 10px;
   background: #fff;
   border-radius: 10px;
@@ -110,13 +90,65 @@ export default {
   flex-direction: row;
   justify-content: space-between;
 }
-.post-type-container {
+
+.post-button {
+  transition: all 0.2s;
+  border-radius: 100%;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
-.theme--dark .button-text {
-  color: black;
+.new-post-icon::before {
+  font-weight: 700;
+}
+
+.button-text {
+  color: #000;
+  margin: 0;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.post-button::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: var(--v-secondary-base);
+  display: block;
+  margin: auto;
+  transition: width 0.2s cubic-bezier(0.5, 0, 1, 0.5);
+}
+
+.post-button:hover::after {
+  width: 100%;
+}
+
+.post-button:hover .new-post-icon {
+  animation: wiggle 1s infinite;
+}
+
+@keyframes wiggle {
+  10% {
+    transform: translateX(-1px);
+  }
+
+  20% {
+    transform: translateX(2px);
+  }
+
+  30% {
+    transform: translateX(-3px);
+  }
+
+  40% {
+    transform: translateX(1px);
+  }
+
+  50% {
+    transform: translateX(0);
+  }
 }
 </style>
