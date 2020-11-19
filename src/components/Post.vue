@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="post-container">
     <div class="post">
       <div :style="hideSidebar ? '' : 'display: none'" class="avatar-column">
         <a :href="post.blogName">
@@ -99,24 +99,15 @@ export default {
 </script>
 
 <style scoped>
-.v-card {
+.v-card.post-container .post {
   margin-bottom: 20px;
 }
-.post {
+.post-container .post {
   max-width: 540px;
   min-height: 225px;
   background: #fff;
   border-radius: 4px;
   position: relative;
-}
-
-.post-image {
-  width: 100%;
-  background: linear-gradient(
-    to bottom left,
-    var(--v-primary-base),
-    var(--v-secondary-base)
-  );
 }
 
 .post .avatar-column .avatar {
@@ -127,9 +118,6 @@ export default {
   position: -webkit-sticky;
   position: sticky;
   top: 69px;
-}
-
-.post .avatar-column .avatar.theme--light {
 }
 
 .avatar-column {
@@ -179,14 +167,9 @@ a.posted-by {
   cursor: pointer;
 }
 
-.notes-and-icons {
-}
-
-.notes-and-icons .like-button {
-}
-
-/* .post-icon:hover {
-  color: var(--v-likeColor-base) !important;
-  transition: 0.2s;
-} */
+/* .post-icon:hover { */
+/* need workaround for when a liked post is unliked, hover keeps it 'liked' */
+/* color: var(--v-likeColor-base) !important; */
+/* transition: 0.2s; */
+/* } */
 </style>

@@ -2,49 +2,48 @@
   <v-container>
     <div class="new-post-container">
       <v-card class="new-post">
-        <div
-          v-for="type in postTypes"
-          :key="type.name"
-          class="post-type-container"
-        >
-          <div class="post-button" @click="newPost">
-            <div class="icon-container">
-              <v-icon class="new-post-icon" size="50px" :color="type.postText">
-                {{ type.iconName }}
-              </v-icon>
+        <v-dialog light v-model="dialog" width="540">
+          <template v-slot:activator="{ on, attrs }">
+            <div
+              v-for="type in postTypes"
+              :key="type.id"
+              class="post-type-container"
+            >
+              <div
+                class="post-button"
+                @click="newPost"
+                v-bind="attrs"
+                v-on="on"
+              >
+                <div class="icon-container">
+                  <v-icon
+                    class="new-post-icon"
+                    size="50px"
+                    :color="type.iconColor"
+                  >
+                    {{ type.iconName }}
+                  </v-icon>
+                </div>
+                <p class="button-text">{{ type.name }}</p>
+              </div>
             </div>
-            <p class="button-text">
-              {{ type.name }}
-            </p>
-          </div>
-        </div>
+          </template>
+          <v-card>
+            <v-card-title class="headline grey lighten-2">
+              card title
+            </v-card-title>
+            <v-card-text> card text here </v-card-text>
+            <v-divider></v-divider>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" text @click="dialog = false">
+                I accept
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
       </v-card>
     </div>
-
-    <v-dialog light v-model="dialog" width="540">
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">
-          Click Me
-        </v-btn>
-      </template>
-
-      <v-card>
-        <v-card-title class="headline grey lighten-2">
-          card title
-        </v-card-title>
-
-        <v-card-text>
-          card text here
-        </v-card-text>
-
-        <v-divider></v-divider>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="dialog = false"> I accept </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
   </v-container>
 </template>
 
@@ -55,35 +54,37 @@ export default {
     return {
       title: "",
       imageUrl: "",
+      dialog: false,
       postTypes: [
         {
+          id: 1,
           name: "Text",
-          postText: "#4A4545",
+          iconColor: "#4A4545",
           iconName: "mdi-format-letter-case",
         },
+        { id: 2, name: "Photo", iconColor: "#CB684C", iconName: "mdi-camera" },
         {
-          name: "Photo",
-          postText: "#CB684C",
-          iconName: "mdi-camera",
-        },
-        {
+          id: 3,
           name: "Quote",
-          postText: "#E6A34C",
+          iconColor: "#E6A34C",
           iconName: "mdi-format-quote-open",
         },
         {
+          id: 4,
           name: "Link",
-          postText: "#72BA8F",
+          iconColor: "#72BA8F",
           iconName: "mdi-link-variant",
         },
         {
+          id: 5,
           name: "Audio",
-          postText: "#A580BE",
+          iconColor: "#A580BE",
           iconName: "mdi-headphones",
         },
         {
+          id: 6,
           name: "Video",
-          postText: "#79828C",
+          iconColor: "#79828C",
           iconName: "mdi-video-vintage",
         },
       ],
@@ -114,6 +115,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .post-button {

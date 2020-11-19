@@ -32,9 +32,16 @@ export default {
 </script>
 
 <style scoped>
-#hello {
-}
+
 .image-container .post-image {
   cursor: pointer;
+   width: 100%;
+  background: linear-gradient(
+    to bottom left,
+    var(--v-primary-base),
+    var(--v-secondary-base)
+  ); /* placeholder for loading image */
 }
+
+
 </style>
