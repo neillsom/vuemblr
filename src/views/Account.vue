@@ -53,7 +53,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 div.preferences-card {
   padding: 0 20px 20px 20px;
   /* background: white; */

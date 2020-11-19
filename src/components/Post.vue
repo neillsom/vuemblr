@@ -98,7 +98,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .v-card {
   margin-bottom: 20px;
 }
