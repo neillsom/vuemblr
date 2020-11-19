@@ -1,8 +1,9 @@
 <template>
   <div class="dashboard">
+    <!-- mobile responsivesness logic need refactoring -->
     <div
-      :style="hideSidebar ? '' : 'align-items: center'"
-      class="posts-container"
+      :style="hideSidebar ? '' : 'align-items: center;'"
+      class="posts-avatars-container"
     >
       <div v-for="post in posts" :key="post.id">
         <div>
@@ -11,19 +12,33 @@
       </div>
     </div>
 
+    <!-- mobile responsivesness logic need refactoring -->
     <div :style="hideSidebar ? '' : 'display: none'" class="sidebar-container">
-      <div class="sidebar-test">
+      <div class="sidebar">
         <h2>Recommended Blogs</h2>
         <v-divider></v-divider>
-        <v-card id="neill">
+        <v-card>
           <v-list color="background" flat>
-            <v-list-item v-for="item in items" :key="item.title">
+            <v-list-item
+              v-for="recommendedBlog in recommendedBlogs"
+              :key="recommendedBlog.id"
+            >
               <v-avatar tile size="37">
-                <v-img contain :src="generateAvatar()"></v-img>
+                <v-img
+                  contain
+                  :src="recommendedBlog.blogData.avatarUrl"
+                ></v-img>
               </v-avatar>
 
               <v-list-item-content>
-                <v-list-item-title v-text="item.title"></v-list-item-title>
+                <v-list-item-title>{{
+                  recommendedBlog.blog
+                }}</v-list-item-title>
+                <v-list-item-subtitle
+                  class="text-truncate"
+                  style="max-width: 150px"
+                  >{{ recommendedBlog.blogData.title }}</v-list-item-subtitle
+                >
               </v-list-item-content>
             </v-list-item>
           </v-list>
@@ -37,6 +52,7 @@
 import postData from "../data/posts.json";
 import avatarData from "../data/avatars.json";
 import Post from "../components/Post";
+import blogs from "../data/blogs.json";
 
 export default {
   name: "Dashboard",
@@ -48,21 +64,7 @@ export default {
     return {
       posts: postData,
       avatars: avatarData,
-      items: [
-        {
-          icon: true,
-          title: "Jason Oner",
-        },
-        {
-          title: "Travis Howard",
-        },
-        {
-          title: "Ali Connors",
-        },
-        {
-          title: "Cindy Baker",
-        },
-      ],
+      recommendedBlogs: blogs,
     };
   },
   methods: {
@@ -84,10 +86,13 @@ export default {
 </script>
 
 <style scoped>
-#neill {
+.sidebar .v-card {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
+}
+.sidebar h2 {
+  font-weight: 500;
 }
 .v-list-item {
   padding: 5px 0;
@@ -101,9 +106,13 @@ export default {
 .v-list-item__content {
   padding-left: 10px;
 }
+
+.theme--dark .v-list-item__title {
+  font-weight: 700;
+}
 .sidebar-container {
 }
-.sidebar-test {
+.sidebar {
   width: 320px;
   background: var(--v-background-base) !important;
   height: 100%;
@@ -111,7 +120,7 @@ export default {
   margin-left: 30px;
 }
 
-.sidebar-test h2 {
+.sidebar h2 {
   padding: 0 10px;
 }
 
@@ -130,7 +139,7 @@ export default {
   align-items: center;
 }
 
-.posts-container {
+.posts-container-avatars {
   display: flex;
   flex-direction: column;
   align-items: flex-end; /* on mobile resize this needs to be changed to center */
@@ -138,7 +147,7 @@ export default {
   /* max-width: 625px; */
 }
 
-.posts-container div {
+.posts-container-avatars div {
   width: 100%;
 }
 

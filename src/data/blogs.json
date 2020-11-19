@@ -1,9 +1,9 @@
 [
 	{
 		"id": "18612133407",
-		"tumblelog": "modernizor",
-		"tumblelog-data": {
-			"avatar_url": "https://64.media.tumblr.com/avatar_b767ea1d294b_64.pnj",
+		"blog": "modernizor",
+		"blogData": {
+			"avatarUrl": "https://64.media.tumblr.com/avatar_b767ea1d294b_64.pnj",
 			"url": "https://modernizor.tumblr.com",
 			"name": "modernizor",
 			"title": "let's modernize the world together",
@@ -21,9 +21,9 @@
   },
   {
 		"id": "5493495235",
-		"tumblelog": "debbie-sketch",
-		"tumblelog-data": {
-			"avatar_url": "https://64.media.tumblr.com/avatar_9a74d36644ac_96.pnj",
+		"blog": "debbie-sketch",
+		"blogData": {
+			"avatarUrl": "https://64.media.tumblr.com/avatar_9a74d36644ac_96.pnj",
 			"url": "https://debbie-sketch.tumblr.com",
 			"name": "debbie-sketch",
 			"title": "Debbie Balboa",
@@ -41,9 +41,9 @@
   },
   {
 		"id": "654346234",
-		"tumblelog": "figdays",
-		"tumblelog-data": {
-			"avatar_url": "https://64.media.tumblr.com/avatar_79e47680c400_96.pnj",
+		"blog": "figdays",
+		"blogData": {
+			"avatarUrl": "https://64.media.tumblr.com/avatar_79e47680c400_96.pnj",
 			"url": "https://figdays.tumblr.com",
 			"name": "figdays",
 			"title": "FIG DAYS COLLECTIVE",

@@ -52,7 +52,7 @@ export default {
 
 <style>
 .icon-container {
-  background: var(--v-surface-base);
+  background: #ffffff;
   border-radius: 4px;
   display: flex;
   flex-direction: column;

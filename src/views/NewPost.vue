@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <div class="new-post-container">
-      <!-- <v-card class="testing">
+      <v-card class="testing">
         <div
           v-for="type in postTypes"
           :key="type.name"
@@ -24,7 +24,7 @@
             {{ type.name }}
           </p>
         </div>
-      </v-card> -->
+      </v-card>
       <v-card max-width="540px" style="padding: 20px" light>
         <v-form>
           <v-text-field v-model="title" label="Title" required></v-text-field>
