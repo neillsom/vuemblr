@@ -2,46 +2,22 @@
   <v-container>
     <div class="new-post-container">
       <v-card class="new-post">
-        <v-dialog light v-model="dialog" width="540">
-          <template v-slot:activator="{ on, attrs }">
-            <div
-              v-for="type in postTypes"
-              :key="type.id"
-              class="post-type-container"
-            >
-              <div
-                class="post-button"
-                @click="newPost"
-                v-bind="attrs"
-                v-on="on"
-              >
-                <div class="icon-container">
-                  <v-icon
-                    class="new-post-icon"
-                    size="50px"
-                    :color="type.iconColor"
-                  >
-                    {{ type.iconName }}
-                  </v-icon>
-                </div>
-                <p class="button-text">{{ type.name }}</p>
-              </div>
+        <div
+          v-for="type in postTypes"
+          :key="type.name"
+          class="post-type-container"
+        >
+          <div class="post-button" @click="newPost">
+            <div class="icon-container">
+              <v-icon class="new-post-icon" size="50px" :color="type.postText">
+                {{ type.iconName }}
+              </v-icon>
             </div>
-          </template>
-          <v-card>
-            <v-card-title class="headline grey lighten-2">
-              card title
-            </v-card-title>
-            <v-card-text> card text here </v-card-text>
-            <v-divider></v-divider>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="primary" text @click="dialog = false">
-                I accept
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
+            <p class="button-text">
+              {{ type.name }}
+            </p>
+          </div>
+        </div>
       </v-card>
     </div>
   </v-container>
@@ -54,38 +30,42 @@ export default {
     return {
       title: "",
       imageUrl: "",
-      dialog: false,
       postTypes: [
         {
-          id: 1,
           name: "Text",
-          iconColor: "#4A4545",
+          postText: "#4A4545",
           iconName: "mdi-format-letter-case",
+          type: "text",
         },
-        { id: 2, name: "Photo", iconColor: "#CB684C", iconName: "mdi-camera" },
         {
-          id: 3,
+          name: "Photo",
+          postText: "#CB684C",
+          iconName: "mdi-camera",
+          type: "photo",
+        },
+        {
           name: "Quote",
-          iconColor: "#E6A34C",
+          postText: "#E6A34C",
           iconName: "mdi-format-quote-open",
+          type: "quote",
         },
         {
-          id: 4,
           name: "Link",
-          iconColor: "#72BA8F",
+          postText: "#72BA8F",
           iconName: "mdi-link-variant",
+          type: "link",
         },
         {
-          id: 5,
           name: "Audio",
-          iconColor: "#A580BE",
+          postText: "#A580BE",
           iconName: "mdi-headphones",
+          type: "audio",
         },
         {
-          id: 6,
           name: "Video",
-          iconColor: "#79828C",
+          postText: "#79828C",
           iconName: "mdi-video-vintage",
+          type: "video",
         },
       ],
     };
@@ -115,7 +95,6 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 20px;
 }
 
 .post-button {
@@ -159,23 +138,23 @@ export default {
 
 @keyframes wiggle {
   10% {
-    transform: translateX(-1px);
+    transform: rotate(-5deg);
   }
 
   20% {
-    transform: translateX(2px);
+    transform: rotate(10deg);
   }
 
   30% {
-    transform: translateX(-3px);
+    transform: rotate(-15deg);
   }
 
   40% {
-    transform: translateX(1px);
+    transform: rotate(5deg);
   }
 
   50% {
-    transform: translateX(0);
+    transform: rotate(0deg);
   }
 }
 </style>
