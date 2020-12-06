@@ -41,7 +41,7 @@
         ></v-col>
       </v-row>
       <v-card-actions>
-        <v-btn depressed color="secondary">Save changes</v-btn>
+        <v-btn color="secondary">Save changes</v-btn>
       </v-card-actions>
     </v-card>
 
